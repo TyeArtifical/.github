@@ -1,0 +1,66 @@
+name: Downtime Report
+description: Report downtime or bot connectivity issues for Tye.
+title: "[DOWN] "
+labels: ["discord", "downtime", "possible: Railway"]
+assignees: []
+body:
+  - type: checkboxes
+    id: railway_status
+    attributes:
+      label: "Step 1: Check Railway Status (especially EU West)"
+      options:
+        - label: "Railway is fully up"
+          value: fully_up
+        - label: "Some parts of Railway are down"
+          value: partial_down
+        - label: "Railway EU West is down"
+          value: eu_west_down
+    validations:
+      required: true
+
+  - type: input
+    id: railway_time
+    attributes:
+      label: "If Railway is down, provide the current date and time (DD/MM/YYYY HH:MM, e.g., 23/12/2026 21:12)"
+      placeholder: "23/12/2026 21:12"
+      multiline: false
+
+  - type: checkboxes
+    id: bot_status
+    attributes:
+      label: "Step 2: Bot Status on Discord"
+      options:
+        - label: "The bot is online"
+          value: online
+        - label: "The bot is offline"
+          value: offline
+        - label: "Other"
+          value: other
+
+  - type: textarea
+    id: bot_status_other
+    attributes:
+      label: "If 'Other', explain the bot status"
+      placeholder: "Describe the issue here"
+      markdown: true
+
+  - type: checkboxes
+    id: issues_experienced
+    attributes:
+      label: "Step 3: Describe issues (if Railway is up)"
+      options:
+        - label: "I keep getting an error message when sending a message to the bot"
+          value: error_message
+        - label: "The bot says I am not subscribed"
+          value: not_subscribed
+        - label: "The bot isn’t responding with anything"
+          value: no_response
+        - label: "Other (please elaborate below)"
+          value: other_issue
+
+  - type: textarea
+    id: issues_other_details
+    attributes:
+      label: "Additional details for 'Other' issues"
+      placeholder: "Insert details here"
+      markdown: true
