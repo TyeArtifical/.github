@@ -43,10 +43,13 @@ body:
     attributes:
       label: "Step 3: Describe issues (if Railway is up)"
       options:
+        - label: "Railway is up- skip"
         - label: "I keep getting an error message when sending a message to the bot"
         - label: "The bot says I am not subscribed"
         - label: "The bot isn’t responding with anything"
         - label: "Other (please elaborate below)"
+    validations:
+      required: true
 
   - type: textarea
     id: issues_other_details
