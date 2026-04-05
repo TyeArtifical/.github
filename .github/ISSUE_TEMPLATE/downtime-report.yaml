@@ -20,6 +20,12 @@ body:
     attributes:
       label: "If Railway is down, provide the current date and time (DD/MM/YYYY HH:MM, e.g., 23/12/2026 21:12)"
       placeholder: "23/12/2026 21:12"
+    validations:
+      required: false
+    depends_on:
+      railway_status:
+        - "Some parts of Railway are down"
+        - "Railway EU West is down"
 
   - type: checkboxes
     id: bot_status
@@ -29,12 +35,17 @@ body:
         - "The bot is online"
         - "The bot is offline"
         - "Other"
+    validations:
+      required: true
 
   - type: textarea
     id: bot_status_other
     attributes:
       label: "If 'Other', explain the bot status"
       placeholder: "Describe the issue here"
+    depends_on:
+      bot_status:
+        - "Other"
 
   - type: checkboxes
     id: issues_experienced
@@ -45,9 +56,14 @@ body:
         - "The bot says I am not subscribed"
         - "The bot isn’t responding with anything"
         - "Other (please elaborate below)"
+    validations:
+      required: false
 
   - type: textarea
     id: issues_other_details
     attributes:
       label: "Additional details for 'Other' issues"
       placeholder: "Insert details here"
+    depends_on:
+      issues_experienced:
+        - "Other (please elaborate below)"
