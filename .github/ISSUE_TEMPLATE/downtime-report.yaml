@@ -9,9 +9,9 @@ body:
     attributes:
       label: "Step 1: Check Railway Status (especially EU West)"
       options:
-        - "Railway is fully up"
-        - "Some parts of Railway are down"
-        - "Railway EU West is down"
+        - label: "Railway is fully up"
+        - label: "Some parts of Railway are down"
+        - label: "Railway EU West is down"
     validations:
       required: true
 
@@ -20,21 +20,15 @@ body:
     attributes:
       label: "If Railway is down, provide the current date and time (DD/MM/YYYY HH:MM, e.g., 23/12/2026 21:12)"
       placeholder: "23/12/2026 21:12"
-    validations:
-      required: false
-    depends_on:
-      railway_status:
-        - "Some parts of Railway are down"
-        - "Railway EU West is down"
 
   - type: checkboxes
     id: bot_status
     attributes:
       label: "Step 2: Bot Status on Discord"
       options:
-        - "The bot is online"
-        - "The bot is offline"
-        - "Other"
+        - label: "The bot is online"
+        - label: "The bot is offline"
+        - label: "Other"
     validations:
       required: true
 
@@ -43,27 +37,19 @@ body:
     attributes:
       label: "If 'Other', explain the bot status"
       placeholder: "Describe the issue here"
-    depends_on:
-      bot_status:
-        - "Other"
 
   - type: checkboxes
     id: issues_experienced
     attributes:
       label: "Step 3: Describe issues (if Railway is up)"
       options:
-        - "I keep getting an error message when sending a message to the bot"
-        - "The bot says I am not subscribed"
-        - "The bot isn’t responding with anything"
-        - "Other (please elaborate below)"
-    validations:
-      required: false
+        - label: "I keep getting an error message when sending a message to the bot"
+        - label: "The bot says I am not subscribed"
+        - label: "The bot isn’t responding with anything"
+        - label: "Other (please elaborate below)"
 
   - type: textarea
     id: issues_other_details
     attributes:
       label: "Additional details for 'Other' issues"
       placeholder: "Insert details here"
-    depends_on:
-      issues_experienced:
-        - "Other (please elaborate below)"
